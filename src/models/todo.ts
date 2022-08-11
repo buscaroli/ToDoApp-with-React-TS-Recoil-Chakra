@@ -6,6 +6,6 @@ export class Todo  {
 
   constructor(todoText: string) {
     this.text = todoText
-    this.id = uuidv4()
+    this.id = uuidv4().toString()
   }
 }
