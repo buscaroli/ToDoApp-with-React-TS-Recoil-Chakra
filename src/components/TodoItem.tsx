@@ -1,5 +1,6 @@
 import React, { EventHandler } from 'react'
-import { Checkbox, ListItem, Text, Flex } from '@chakra-ui/react'
+import { Checkbox, ListItem, Text, Flex, Button} from '@chakra-ui/react'
+import { CloseIcon } from '@chakra-ui/icons'
 import { Todo } from '../models/todo'
 import { useRecoilState } from 'recoil'
 import { todoListAtom } from '../state/todoListState'
@@ -28,16 +29,31 @@ const TodoItem: React.FC<{todo: Todo}> = (props) =>  {
 
   return (
     <ListItem mb="2">
-      <Flex justifyContent="center">
-        <Text fontSize="xl" >
-         {props.todo.text}
-        </Text>
-      <Checkbox
-        onChange={onCheckboxClick}
-        // isChecked={props.todo.done}
-        ms="4" 
-        colorScheme="teal"
-        ></Checkbox>
+      <Flex justifyContent="space-between">
+        <Flex justifyContent="space-between">
+          <Checkbox
+            onChange={onCheckboxClick}
+            // isChecked={props.todo.done} 
+            colorScheme="teal"
+          >  
+          </Checkbox>
+
+          <Text fontSize="xl" ms="2rem">
+           {props.todo.text}
+          </Text>
+        </Flex>
+       
+
+        
+
+        <Button
+          w="12"
+          colorScheme="red"
+          leftIcon={<CloseIcon ml="7px" w={5} h={5}/>}
+        >
+
+        </Button>
+
       </Flex>
     </ListItem>
   )

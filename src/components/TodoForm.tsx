@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react'
-import { FormControl, FormLabel, Input, Button} from '@chakra-ui/react'
+import { FormControl, FormLabel, Input, Button, InputRightElement, InputGroup} from '@chakra-ui/react'
+import { AddIcon } from '@chakra-ui/icons'
 import { useRecoilState } from 'recoil'
 import { todoListAtom } from '../state/todoListState'
 import { Todo } from '../models/todo'
@@ -30,22 +31,29 @@ const TodoForm: React.FC = () => {
   }, [text, todoList])
 
   return (
-    <FormControl
-      
-    >
-      <FormLabel>To Do</FormLabel>
-      <Input
+    <FormControl mb="2rem">
+      <FormLabel fontSize="2rem" textAlign="center" color="blue.600">To Do</FormLabel>
+      <InputGroup size="lg">
+        <Input
         onChange={handleTextChange}
         placeholder="Walk the dog..."
         value={text} />
-      <Button
-        onClick={onFormSubmit}
-        type="submit"
-        backgroundColor={"blue.400"} 
-        color={"white"} 
-        my={4}>
-          Add
-      </Button>
+        <InputRightElement>
+          <Button
+            onClick={onFormSubmit}
+            type="submit"
+            backgroundColor={"blue.400"} 
+            color={"white"} 
+            my={4}
+            textAlign="center"
+            leftIcon={<AddIcon ml="7px" w={6} h={6}/>}
+            >
+              
+          </Button>
+        </InputRightElement>
+      
+      </InputGroup>
+      
     </FormControl>
   )
 }

@@ -17,13 +17,12 @@ import { Todo } from './models/todo'
 
 
 function App() {
-
   const todoList = useRecoilValue(todoListAtom)
 
   return (
     
     <Container className="App" >
-      <Heading mb={4}>Typescript App!</Heading>
+      <Heading mb={4} color="red.600">ToDo with TS, Recoil and Chakra</Heading>
       <TodoForm />
       <Todos items={todoList}/>
     </Container>
