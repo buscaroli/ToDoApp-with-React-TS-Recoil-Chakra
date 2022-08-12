@@ -28,7 +28,7 @@ const TodoItem: React.FC<{todo: Todo}> = (props) =>  {
   }
 
   return (
-    <ListItem mb="2">
+    <ListItem mb="4">
       <Flex justifyContent="space-between">
         <Flex justifyContent="space-between">
           <Checkbox
@@ -38,7 +38,7 @@ const TodoItem: React.FC<{todo: Todo}> = (props) =>  {
           >  
           </Checkbox>
 
-          <Text fontSize="xl" ms="2rem">
+          <Text fontSize="xl" mx="2rem">
            {props.todo.text}
           </Text>
         </Flex>

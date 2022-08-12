@@ -21,14 +21,14 @@ const TodoForm: React.FC = () => {
     const newTodo = new Todo(text)
     console.log('newTodo: ', newTodo)
     // @ts-ignore
-    setTodoList((prevState) => [newTodo, ...prevState])
-    
+    setTodoList((prevState) => [newTodo, ...prevState]) // DEBUG ts-signature?
+    setText('')
   }
 
-  useEffect(() => {
-    console.log(text)
-    console.log(todoList)
-  }, [text, todoList])
+  // useEffect(() => {
+  //   console.log(text)
+  //   console.log(todoList)
+  // }, [text, todoList])
 
   return (
     <FormControl mb="2rem">
@@ -44,7 +44,7 @@ const TodoForm: React.FC = () => {
             type="submit"
             backgroundColor={"blue.400"} 
             color={"white"} 
-            my={4}
+            me={1}
             textAlign="center"
             leftIcon={<AddIcon ml="7px" w={6} h={6}/>}
             >
