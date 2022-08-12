@@ -9,7 +9,7 @@ const TodoItem: React.FC<{todo: Todo}> = (props) =>  {
   const [todos, setTodos] = useRecoilState(todoListAtom)
 
 
-  const onCheckboxClick = () => {
+  const onCheckboxClick: () => void = () => {
     
     const updatedDoneState = {
       id: props.todo.id,
@@ -23,8 +23,12 @@ const TodoItem: React.FC<{todo: Todo}> = (props) =>  {
       } else {
         return x
       }
-    }))
-    
+    })
+    )
+  }
+
+  const onDelBtnClick: () => void = () => {
+    setTodos(prevState => prevState.filter(x => x.id !== props.todo.id))
   }
 
   return (
@@ -42,18 +46,14 @@ const TodoItem: React.FC<{todo: Todo}> = (props) =>  {
            {props.todo.text}
           </Text>
         </Flex>
-       
-
-        
 
         <Button
+        onClick={onDelBtnClick}
           w="12"
           colorScheme="red"
           leftIcon={<CloseIcon ml="7px" w={5} h={5}/>}
         >
-
         </Button>
-
       </Flex>
     </ListItem>
   )
