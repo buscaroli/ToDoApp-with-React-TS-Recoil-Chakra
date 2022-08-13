@@ -4,6 +4,7 @@ import { AddIcon } from '@chakra-ui/icons'
 import { useRecoilState } from 'recoil'
 import { todoListAtom } from '../state/todoListState'
 import { Todo } from '../models/todo'
+import { persist } from '../utils/persistence'
 
 const TodoForm: React.FC = () => {
   const [text, setText] = useState('')
@@ -25,10 +26,10 @@ const TodoForm: React.FC = () => {
     setText('')
   }
 
-  // useEffect(() => {
-  //   console.log(text)
-  //   console.log(todoList)
-  // }, [text, todoList])
+  // everytime todoList changes, save it to localStorage
+  useEffect(() => {
+    persist('write', 'todos', todoList)
+  }, [todoList])
 
   return (
     <FormControl mb="2rem">

@@ -1,6 +1,6 @@
 import { Todo } from "../models/todo"
 
-export const persist = (action: string, key: string, payload: Todo[]) => {
+export const persist = (action: string, key: string, payload?: Todo[]) => {
   switch(action) {
     case 'read':
       const data: string | null = localStorage.getItem(key)

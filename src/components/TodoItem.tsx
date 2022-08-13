@@ -1,9 +1,10 @@
-import React, { EventHandler } from 'react'
+import React from 'react'
 import { Checkbox, ListItem, Text, Flex, Button} from '@chakra-ui/react'
 import { CloseIcon } from '@chakra-ui/icons'
 import { Todo } from '../models/todo'
 import { useRecoilState } from 'recoil'
 import { todoListAtom } from '../state/todoListState'
+import { persist } from '../utils/persistence'
 
 const TodoItem: React.FC<{todo: Todo}> = (props) =>  {
   const [todos, setTodos] = useRecoilState(todoListAtom)
@@ -17,7 +18,8 @@ const TodoItem: React.FC<{todo: Todo}> = (props) =>  {
       done: !props.todo.done
     }
     
-    setTodos(prevState => prevState.map(x => {
+    
+    setTodos((prevState: Todo[]) => prevState.map((x: Todo) => {
       if (x.id === props.todo.id) {
         return updatedDoneState
       } else {
@@ -25,10 +27,13 @@ const TodoItem: React.FC<{todo: Todo}> = (props) =>  {
       }
     })
     )
+    
+
   }
 
   const onDelBtnClick: () => void = () => {
-    setTodos(prevState => prevState.filter(x => x.id !== props.todo.id))
+    
+    setTodos((prevState: Todo[]) => prevState.filter((x: Todo) => x.id !== props.todo.id))
   }
 
   return (
